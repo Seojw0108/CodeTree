@@ -47,11 +47,14 @@ int main() {
             }
         }
         else if (command == 'D') {
-            if (it != v.end()) {
-                ++it;
-                it = v.erase(it);     // 첫 번째 문자 삭제 후 it는 다음 위치로 이동됨
-                if (it != v.end()) {
-                    it = v.erase(it); // 그 다음 공백 문자 삭제
+            auto next = it;
+            if (next != v.end()) {
+                ++next;
+                if (next != v.end()) {
+                    next = v.erase(next);     // 문자 삭제
+                    if (next != v.end()) {
+                        next = v.erase(next); // 공백 삭제
+                    }
                 }
             }
         }
